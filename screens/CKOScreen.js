@@ -7,7 +7,7 @@ export function CKOScreen({navigation}) {
 
     const styles = StyleSheet.create({
         lineStyle: {
-            flex: "none",
+            flex: 1,
             justifyContent: 'space-between',
             height: 1,
             borderWidth: 2,

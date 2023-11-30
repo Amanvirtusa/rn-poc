@@ -13,7 +13,9 @@ export function UserDetails() {
         height: 40,
         padding: 5,
         margin: 5,
-        border: "2px solid #5d89f1",
+        borderWidth: 2,
+        borderColor: 'black',
+        borderBottomWidth: StyleSheet.hairlineWidth,
         borderRadius: 5
     };
 
