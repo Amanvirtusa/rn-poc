@@ -1,4 +1,4 @@
-import {Text, TextInput} from "react-native";
+import {StyleSheet, Text, TextInput} from "react-native";
 import {Picker} from "@react-native-picker/picker";
 import * as React from "react";
 import {useState} from "react";

@@ -26,7 +26,7 @@ const Cart = ({paymentStore}) => {
             borderWidth: 2,
             borderColor: 'black',
             borderBottomWidth: StyleSheet.hairlineWidth,
-            borderRadius: ,
+            borderRadius: 5,
         }
     })
 
