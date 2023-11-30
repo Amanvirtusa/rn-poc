@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View} from "react-native";
-import {Picker} from "@react-native-picker/picker";
+import { SelectList } from 'react-native-dropdown-select-list'
 import * as React from "react";
 import {useState} from "react";
 import {observer} from "mobx-react-lite";
@@ -30,90 +30,66 @@ const Cart = ({paymentStore}) => {
         }
     })
 
-    const pickerItem = [0, 1, 2, 3, 4, 5, 10, 25, 100].map(amount => <Picker.Item label={amount} value={amount}
-                                                                                  key={amount}/>)
+    const quantityData = [
+        {key:'0',value:'0'},
+        {key:'1',value:'1'},
+        {key:'2',value:'2'},
+        {key:'3',value:'3'},
+        {key:'4',value:'4'},
+        {key:'5',value:'5'},
+        {key:'10',value:'10'},
+        {key:'25',value:'25'},
+        {key:'100',value:'100'},
+      ];
 
     return <>
         <Text style={{fontSize: 20, color: 'purple'}}>Cart</Text>
 
         <Text>Random product</Text>
-        <View style={styles.container}>
-            <View style={styles.item}>
-                <Text style={{paddingTop: 17}}>quantity</Text>
-            </View>
-            <View style={styles.item}>
-                <Picker
-                    style={styles.inputFieldStyle}
-                    selectedValue={randomProduct_0.quantity}
-                    onValueChange={(itemValue, itemIndex) => {
-                        setRandomProduct_0({...randomProduct_0, quantity: itemValue})
-                        paymentStore.setTotalPrice(
-                            (itemValue * randomProduct_0.price.value) +
-                            (randomProduct_1.quantity * randomProduct_1.price.value) +
-                            (randomProduct_2.quantity * randomProduct_2.price.value))
-                    }}
-                >
-                    {pickerItem}
-                </Picker>
-            </View>
-            <View style={styles.item}>
-                <Text
-                    style={{paddingTop: 17}}>price {randomProduct_0.price.value}{randomProduct_0.price.currency}</Text>
-            </View>
-        </View>
+        <Text style={{paddingTop: 5}}>quantity</Text>
+        <SelectList 
+            setSelected={(newQuantity) => {
+                setRandomProduct_0({...randomProduct_0, quantity: newQuantity})
+                paymentStore.setTotalPrice(
+                    (newQuantity * randomProduct_0.price.value) +
+                    (randomProduct_1.quantity * randomProduct_1.price.value) +
+                    (randomProduct_2.quantity * randomProduct_2.price.value))
+            }}
+            data={quantityData}
+            save="value"
+        />
+        <Text style={{paddingTop: 10, paddingBottom: 20}}>price {randomProduct_0.price.value}{randomProduct_0.price.currency} </Text>
 
 
         <Text>Another random product</Text>
-        <View style={styles.container}>
-            <View style={styles.item}>
-                <Text style={{paddingTop: 17}}>quantity</Text>
-            </View>
-            <View style={styles.item}>
-                <Picker
-                    style={styles.inputFieldStyle}
-                    selectedValue={randomProduct_1.quantity}
-                    onValueChange={(itemValue, itemIndex) => {
-                        setRandomProduct_1({...randomProduct_1, quantity: itemValue})
-                        paymentStore.setTotalPrice(
-                            (randomProduct_0.quantity * randomProduct_0.price.value) +
-                            (itemValue * randomProduct_1.price.value) +
-                            (randomProduct_2.quantity * randomProduct_2.price.value))
-                    }
-                    }>
-                    {pickerItem}
-                </Picker>
-            </View>
-            <View style={styles.item}>
-                <Text
-                    style={{paddingTop: 17}}>price {randomProduct_1.price.value}{randomProduct_1.price.currency}</Text>
-            </View>
-        </View>
+        <Text style={{paddingTop: 5}}>quantity</Text>
+        <SelectList 
+            setSelected={(newQuantity) => {
+                setRandomProduct_1({...randomProduct_1, quantity: newQuantity})
+                paymentStore.setTotalPrice(
+                    (randomProduct_0.quantity * randomProduct_0.price.value) +
+                    (newQuantity * randomProduct_1.price.value) +
+                    (randomProduct_2.quantity * randomProduct_2.price.value))
+            }}
+            data={quantityData}
+            save="value"
+        />
+        <Text style={{paddingTop: 10, paddingBottom: 20}}>price {randomProduct_1.price.value}{randomProduct_1.price.currency}</Text>
 
         <Text>Yet another random product</Text>
-        <View style={styles.container}>
-            <View style={styles.item}>
-                <Text style={{paddingTop: 17}}>quantity</Text>
-            </View>
-            <View style={styles.item}>
-                <Picker
-                    style={styles.inputFieldStyle}
-                    selectedValue={randomProduct_2.quantity}
-                    onValueChange={(itemValue, itemIndex) => {
-                        setRandomProduct_2({...randomProduct_2, quantity: itemValue})
-                        paymentStore.setTotalPrice(
-                            (randomProduct_0.quantity * randomProduct_0.price.value) +
-                            (randomProduct_1.quantity * randomProduct_1.price.value) +
-                            (itemValue * randomProduct_2.price.value))
-                    }
-                    }>
-                    {pickerItem}
-                </Picker>
-            </View>
-            <View style={styles.item}>
-                <Text
-                    style={{paddingTop: 17}}>price {randomProduct_2.price.value}{randomProduct_2.price.currency}</Text>
-            </View>
-        </View>
+        <Text style={{paddingTop: 5}}>quantity</Text>
+        <SelectList 
+            setSelected={(newQuantity) => {
+                setRandomProduct_2({...randomProduct_2, quantity: newQuantity})
+                paymentStore.setTotalPrice(
+                    (randomProduct_0.quantity * randomProduct_0.price.value) +
+                    (randomProduct_1.quantity * randomProduct_1.price.value) +
+                    (newQuantity * randomProduct_2.price.value))
+            }}
+            data={quantityData}
+            save="value"
+        />
+        <Text style={{paddingTop: 5}}>price {randomProduct_2.price.value}{randomProduct_2.price.currency}</Text>
     </>
 }
 

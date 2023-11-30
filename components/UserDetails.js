@@ -1,5 +1,5 @@
-import {StyleSheet, Text, TextInput} from "react-native";
-import {Picker} from "@react-native-picker/picker";
+import {StyleSheet, Text, TextInput, View} from "react-native";
+import { SelectList } from 'react-native-dropdown-select-list'
 import * as React from "react";
 import {useState} from "react";
 
@@ -7,7 +7,7 @@ export function UserDetails() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [selectedCreditCard, setSelectedCreditCard] = useState('');
+    const [selectedCreditCard, setSelectedCreditCard] = useState('amex');
 
     const inputFieldStyle = {
         height: 40,
@@ -40,16 +40,16 @@ export function UserDetails() {
             defaultValue={phone}
         />
         <Text>Saved paying methods</Text>
-        <Picker
-            style={inputFieldStyle}
-            selectedValue={selectedCreditCard}
-            onValueChange={(itemValue, itemIndex) =>
-                setSelectedCreditCard(itemValue)
-            }>
-            <Picker.Item label="AMEX" value="amex"/>
-            <Picker.Item label="VISA" value="visa"/>
-            <Picker.Item label="MASTERCARD" value="mastercard"/>
-            <Picker.Item label="PAYPAL" value="paypal"/>
-        </Picker>
+        <SelectList 
+            setSelected={(val) => setSelectedCreditCard(val)} 
+            data={[
+                {key:'amex', value:'amex'},
+                {key:'visa', value:'visa'},
+                {key:'mastercard', value:'mastercard'},
+                {key:'paypal', value:'paypal'},
+            ]}
+            save="value"
+            defaultOption={{ key:'amex', value:'amex' }}
+        />
     </>
 }
