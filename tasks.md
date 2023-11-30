@@ -1,8 +1,12 @@
 ## Task
 
-### Please choose 1-4 (and that max 4, is a really hard limit. 2-3 would be ideal. There are more then enough and different type of tasks for a reason)
-### Make sure to choose fitting tasks which could show how you think, how you write code. Keep in mind code quality and      
+### Please choose 1-4. That max 4 tasks is a really hard limit. 2-3 would be ideal. There are more then enough and different type of tasks for a reason
+
+### Make sure to choose fitting tasks which could show how you think, how you write code. Keep in mind code quality and a working end product
+
 ### Important time-limit: do not spend more than 2-4 hours on the tasks
+
+### Feel free to fork the repo, work on it and send back the link.
 
 1, Create a **coupon component** on **CKOScreen**
     - create in memory storage for available coupons
