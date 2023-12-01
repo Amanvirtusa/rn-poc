@@ -1,7 +1,7 @@
 import {StyleSheet, View, SafeAreaView, ScrollView} from "react-native";
 import * as React from "react";
-import {Cart, CheckoutButton, PaymentDetails, UserDetails} from "../components";
-import {paymentStore} from "../stores";
+import {Cart, CheckoutButton, PaymentDetails, UserDetails,Coupon} from "../components";
+import {paymentStore,cartStore} from "../stores";
 
 export function CKOScreen({navigation}) {
 
@@ -23,12 +23,16 @@ export function CKOScreen({navigation}) {
             marginHorizontal: 20,
         }
     })
+ 
+     
 return (
     <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
                 <UserDetails/>
                 <View style={styles.lineStyle}/>
-                <Cart paymentStore={paymentStore}/>
+                <Cart paymentStore={paymentStore} cartStore={cartStore}/>
+                <View style={styles.lineStyle}/>
+                <Coupon testID={'CouponT'} paymentStore={paymentStore}/>
                 <View style={styles.lineStyle}/>
                 <PaymentDetails paymentStore={paymentStore}/>
                 <View style={styles.lineStyle}/>
